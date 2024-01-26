@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% block title %} Login {% endblock %}
+
+
+{% block content %}
+
+<style>
+    .element{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(82, 82, 238);
+    height: 100%;
+    padding: 20px;
+}
+.my-container{
+    box-shadow: hsl(0, 0%, 80%) 0 0 16px;
+    padding: 10px;
+}
+label{
+        font-size: 20px;
+        color: #610c27 ;
+    }
+</style>
+
+<div class="container" style="margin-top: 20px;">
+    <div class="row my-container">
+        <div class="col-lg-6">
+            <div class="elements">
+                <div class="box2">
+                    <div class="add-bg">
+                        <h3 style="color: #555;">Login</h3>
+                        {% with messages=get_flashed_messages(with_categories=True) %}
+                        {% if messages %}
+                        {% for category,msg in messages %}
+                        
+                            <div class="alert alert-{{category}} alert-dismissible fade show  name" role="alert" >
+                            <strong> {{msg}}</strong>
+                            <button type="button" class="btn-close name1" data-bs-dismiss="alert" aria-label="close"></button>
+                            </div>
+
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                    </div>
+                    <form action="" method="POST">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label for="">Username</label>
+                                <input type="text" name="username" placeholder="Enter Username" value="{{username}}">
+                            </div>
+                            <div class="col-lg-12">
+                                <label for="">Password</label>
+                                <input type="password" name="password" placeholder="Enter Password" value="{{password}}">
+                            </div>
+                            <div class="col-lg-12">
+                                <button type="submit" class="btn btn-success" style="margin-top: 10px;">Login</button>
+                            </div>
+                            <p style="font-weight: bolder;">Don't have an account? <a href="{{ url_for('register') }}">Register</a></p>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-3 col-12 mt-2 d-flex align-items-center mt-lg-0">
+                    <p style="margin-top: 40px;">Design: <a class="sponsored-link" rel="sponsored" href="" style="color: red;" target="_blank">LaytonSoftwares</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="element" style="background: rgb(82, 82, 238); margin-bottom: 15px;">
+                <div class="col-lg-6 col-12 mb-5 mb-lg-0">
+                    <div class="hero-section-text mt-5">
+                        <h6 class="text-white">Are you looking for your dream councellor?</h6>
+
+                        <h1 class="hero-title text-white mt-4 mb-4">Online Platform. <br> Counselling portal</h1>
+
+                        <a href="{{url_for('register')}}" class="custom-btn custom-border-btn btn" style="color: white; font-weight: bold; padding: 10px 50px;">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="box">
+    <h2 style="text-align: center; color: #555; padding: 2px 10px; background: white; border-radius: 10px;"><span style="color: red;font-size: 80px;">+</span><span style="color: orange;">DISPENSARY</span></h2>
+    
+
+    <form action="" method="POST">
+        <input type="text" name="username" placeholder="Enter Username" value="{{username}}">
+        <input type="email" name="email" placeholder="Enter Email" value="{{email}}">
+        <input type="password" name="password" placeholder="Enter Password" value="{{password}}">
+        <input type="password" name="confirm" placeholder="Confirm Password" value="{{confirm}}">
+        <select name="choices" id="">
+            <option value="">---Register As---</option>
+            <option value="Patient">Patient</option>
+            <option value="Doctor">Doctor</option>
+        </select>
+        <button type="submit" class="btn btn-success">Register</button>
+    </form>
+    <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+</div> -->
+
+{% include 'includes/footer.html' %}
+
+{% endblock %}
